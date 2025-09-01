@@ -1,0 +1,9 @@
+add_subdirectory(domain)
+add_subdirectory(service)
+add_subdirectory(controller)
+add_library(rest)
+target_sources(rest PRIVATE server.cpp)
+target_include_directories(rest INTERFACE ..)
+target_link_libraries(rest PRIVATE controller)
+
+target_link_libraries(rest PRIVATE Threads::Threads)
