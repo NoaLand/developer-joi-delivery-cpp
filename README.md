@@ -148,6 +148,8 @@ Technically, Conan is not must have, but in order to simplify environment setup,
 
 ### Build the project
 
+brew install nlohmann-json
+
 0. Setup a profile for Conan, if this is the first time you get Conan 2.x run on your machine.
 
 ```shell

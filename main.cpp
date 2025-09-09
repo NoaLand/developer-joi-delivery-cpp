@@ -8,7 +8,9 @@
 
 #include "rest/util/JsonUtil.hpp"
 
-CartService cart_service;
+UserService user_service{};
+ProductService product_service{};
+CartService cart_service{user_service, product_service};
 
 void showCartProductInfo() {
     // Placeholder function to show existing product info in user's cart
@@ -51,7 +53,7 @@ void viewCartInfo() {
 
     // add code here to pretty print the json object
     std::cout << j.dump(4) << std::endl; // pretty print with 4 spaces indentation
-    
+
 }
 
 int main(int argc, char *argv[]) {
