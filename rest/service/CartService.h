@@ -50,7 +50,6 @@ public:
     cartProductInfo.setSellingPrice(gproduct.getSellingPrice());
 
     return cartProductInfo;
-    //return CartProductInfo(cart, gproduct, gproduct.getSellingPrice());
   }
 
   Cart getCartForUser(const std::string &userId) {

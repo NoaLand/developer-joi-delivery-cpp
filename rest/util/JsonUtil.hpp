@@ -7,14 +7,12 @@
 
 #include "../domain/Outlet.h"
 
-// #include <boost/beast/http.hpp>
 #include <nlohmann/json.hpp>
 
 #include "../dto/AddProductRequest.h"
 #include "../dto/CartProductInfo.h"
 
 #include "../service/CartService.h"
-// namespace http = boost::beast::http;
 
 namespace detail {
 auto to_json(Product product) {
