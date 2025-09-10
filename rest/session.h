@@ -48,7 +48,20 @@ class Session : public std::enable_shared_from_this<Session> {
       return fail(ec, "read");
     }
 
+    if(req_.target() == "/") {
+        handle_root();
+    }
+
     send(std::move(handler_(req_)));
+  }
+
+  void handle_root() {
+      http::response<http::string_body> res{http::status::ok, req_.version()};
+      res.set(http::field::server, "Beast");
+      res.set(http::field::content_type, "text/html");
+      res.body() = "Welcome to the homepage!";
+      res.prepare_payload();
+      http::async_write(stream_, res, boost::beast::bind_front_handler(&Session::on_write, shared_from_this(), false));
   }
 
   void on_write(bool close, error_code ec, std::size_t bytes_transferred) {
