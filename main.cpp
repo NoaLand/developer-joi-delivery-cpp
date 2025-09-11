@@ -59,7 +59,7 @@ void viewCartInfo() {
 
 int main(int argc, char *argv[]) {
     std::cout << "Grocery Store Management CLI\n";
-    std::cout <<" 1. Add product to Cart for a user\n";
+    std::cout << "1. Add product to Cart for a user\n";
     std::cout << "2. To View Cart of a specific user\n";
     std::cout << "3. Exit\n";
     std::cout << "Select an option (1-3): ";
@@ -74,6 +74,9 @@ int main(int argc, char *argv[]) {
             break;
         case 2:
             viewCartInfo();
+            break;
+        case 3:
+            std::cout << "Exiting the application...\n";
             break;
         default:
             std::cout << "Invalid option selected.\n";
