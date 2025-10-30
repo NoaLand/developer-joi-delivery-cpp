@@ -35,7 +35,7 @@ public:
 
   static int getRandomNumberUsingNextInt(int min, int max);
 
-private:
+// private:
   static GroceryProduct createGroceryProduct(const std::string &productName,
                                              const std::string &productId,
                                              const GroceryStore &store);

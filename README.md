@@ -49,88 +49,6 @@ Dummy Products for Stores to sell and users to buy from.
 | product102 | Spinach     | store101   |
 | product103 | Crackers    | store101   |
 
-
-## API
-
-Below is a list of API endpoints with their respective input and output. Please note that the application needs to be
-running for the following endpoints to work. For more information about how to run the application, please refer
-to [run the application](#run-the-application) section above.
-
-### Add Product to Cart
-EndPoint
-```
-POST /cart/product
-```
-
-Request Body
-```
-{
-    userId: "",
-    outletId: "",
-    productId: ""
-}
-```
-
-Response Body
-```
-{
-    cart: {
-        cartId:"",
-        outlet:"", 
-        products:[],
-        user:""
-    },
-    product: {},
-    sellingPrice: 
-}
-```
-
-### View Cart
-EndPoint
-```GET /cart/view?userId=<userId>```
-
-Response Body
-```
-{
-    cartId: "",
-    outlet:"",
-    products: [],
-    user:""
-}
-```
-
-Retrieving user details using CURL
-
-```shell
-$ curl "http://localhost:8888/cart/view/user102"
-```
-
-Example output
-
-```json
-{
-  "view": {
-    "cartId": "cart102",
-    "outlet": {
-      "outletId": "store101",
-      "outletName": "Fresh Picks"
-    },
-    "products": []
-  }
-}
-```
-
-### Inventory Health
-EndPoint
-```GET /inventory/health?storeid=<storeid>```
-
-Response Body
-```
-{
-    //to be implemented.
-}
-```
-
 ## Tech Requirements
 To build the project, one need to meet the below set of techical stack requirements.
 
@@ -157,7 +75,6 @@ conan profile detect
 Now, assuming you are already at the root of this repository, follow:
 
 1. Install or build the dependencies
-
 
 ```shell
 conan install . --output-folder=build -s build_type=Debug --build=missing
@@ -198,8 +115,82 @@ Unit tests can be executed as follows.
   $ ctest .
   ```
 
-
 ### Run the application
   ```shell
-  $ ./app <address> <kPort> <concurrency>
+  $ ./app
   ```
+
+Below are the outputs from execution of 
+```
+./app
+``` 
+
+#### Sample Execution Output 01:
+```
+Grocery Store Management CLI
+1. Add product to Cart for a user
+2. To View Cart of a specific user
+3. Exit
+Select an option (1-3): 1
+Adding product to Cart for a user
+Enter User ID: user101
+Enter Product ID: product101
+Enter Outlet ID: store101
+{
+    "add": {
+        "cart": {
+            "cartId": "cart101",
+            "outlet": {
+                "outletId": "store101",
+                "outletName": "Fresh Picks"
+            },
+            "products": [
+                {
+                    "mrp": 10.5,
+                    "productId": "product101",
+                    "productName": "Wheat Bread"
+                }
+            ]
+        },
+        "proudct": {
+            "mrp": 10.5,
+            "productId": "product101",
+            "productName": "Wheat Bread"
+        },
+        "sellingPrice": 1.5725600291792398e+25
+    }
+}
+```
+
+ #### Sample Execution Output 02:
+ ```
+ Grocery Store Management CLI
+1. Add product to Cart for a user
+2. To View Cart of a specific user
+3. Exit
+Select an option (1-3): 2
+Viewing cart of a specific user...
+Enter User ID: user102
+User ID: user102
+-- view query - user id user102
+{
+    "view": {
+        "cartId": "cart102",
+        "outlet": {
+            "outletId": "store101",
+            "outletName": "Fresh Picks"
+        },
+        "products": []
+    }
+}
+```
+
+#### Sample Execution Output 03:
+```
+Grocery Store Management CLI
+1. Add product to Cart for a user
+2. To View Cart of a specific user
+3. Exit
+Select an option (1-3): 3
+Exiting the application...
+```

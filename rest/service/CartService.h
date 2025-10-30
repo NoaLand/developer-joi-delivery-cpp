@@ -13,6 +13,7 @@
 #include <string>
 #include <unordered_map>
 #include <optional>
+#include <iostream>
 
 class CartService {
 public:
@@ -31,6 +32,7 @@ public:
     CartProductInfo cartProductInfo;
     auto user = userService.fetchUserById(addProductRequest.getUserId());
     if(!user.has_value()) {
+      std::cerr << "User not found: " << addProductRequest.getUserId() << std::endl;
       return cartProductInfo;
     }
     Cart &cart = fetchCartForUser(user.value());
@@ -38,6 +40,7 @@ public:
     auto product = productService.getProduct(
         addProductRequest.getProductId(), addProductRequest.getOutletId());
     if(!product.has_value()) {
+      std::cerr << "Product not found: " << addProductRequest.getOutletId() << std::endl;
       return cartProductInfo;
     }
 
@@ -50,7 +53,6 @@ public:
     cartProductInfo.setSellingPrice(gproduct.getSellingPrice());
 
     return cartProductInfo;
-    //return CartProductInfo(cart, gproduct, gproduct.getSellingPrice());
   }
 
   Cart getCartForUser(const std::string &userId) {

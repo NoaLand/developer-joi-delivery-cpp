@@ -10,7 +10,7 @@ find_package(Threads)
 
 add_subdirectory(rest)
 add_executable(app main.cpp)
-target_link_libraries(app PRIVATE rest)
+target_link_libraries(app PRIVATE nlohmann_json::nlohmann_json)
 
 enable_testing()
 add_subdirectory(tests)
