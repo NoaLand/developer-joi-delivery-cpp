@@ -137,28 +137,26 @@ Enter User ID: user101
 Enter Product ID: product101
 Enter Outlet ID: store101
 {
-    "add": {
-        "cart": {
-            "cartId": "cart101",
-            "outlet": {
-                "outletId": "store101",
-                "outletName": "Fresh Picks"
-            },
-            "products": [
-                {
-                    "mrp": 10.5,
-                    "productId": "product101",
-                    "productName": "Wheat Bread"
-                }
-            ]
+    "cart": {
+        "cartId": "cart101",
+        "outlet": {
+            "outletId": "store101",
+            "outletName": "Fresh Picks"
         },
-        "proudct": {
-            "mrp": 10.5,
-            "productId": "product101",
-            "productName": "Wheat Bread"
-        },
-        "sellingPrice": 1.5725600291792398e+25
-    }
+        "products": [
+            {
+                "mrp": 10.5,
+                "productId": "product101",
+                "productName": "Wheat Bread"
+            }
+        ]
+    },
+    "product": {
+        "mrp": 10.5,
+        "productId": "product101",
+        "productName": "Wheat Bread"
+    },
+    "sellingPrice": 1.5725600291792398e+25
 }
 ```
 
@@ -171,17 +169,16 @@ Enter Outlet ID: store101
 Select an option (1-3): 2
 Viewing cart of a specific user...
 Enter User ID: user102
+Enter User ID: user102
 User ID: user102
 -- view query - user id user102
 {
-    "view": {
-        "cartId": "cart102",
-        "outlet": {
-            "outletId": "store101",
-            "outletName": "Fresh Picks"
-        },
-        "products": []
-    }
+    "cartId": "cart102",
+    "outlet": {
+        "outletId": "store101",
+        "outletName": "Fresh Picks"
+    },
+    "products": []
 }
 ```
 

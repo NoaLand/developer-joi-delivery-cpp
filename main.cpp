@@ -31,7 +31,7 @@ void addProductToCartForUser(){
     auto cartProductInfo = cart_service.addProductToCartForUser(addProductRequest);
     auto response_body = detail::to_json(cartProductInfo);
     nlohmann::json j;
-    j["add"] = response_body;
+    j = response_body;
     // add code here to pretty print the json object
     std::cout << j.dump(4) << std::endl; // pretty print with 4 spaces indentation
 
@@ -50,7 +50,7 @@ void viewCartInfo() {
 
     auto response_body = detail::to_json(cart);
     nlohmann::json j;
-    j["view"] = response_body;
+    j = response_body;
 
     // add code here to pretty print the json object
     std::cout << j.dump(4) << std::endl; // pretty print with 4 spaces indentation

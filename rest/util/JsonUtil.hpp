@@ -41,7 +41,7 @@ auto to_json(const CartProductInfo &info) {
   auto cart_json = to_json(info.getCart());
   auto product_json = to_json(info.getProduct());
   return nlohmann::json{{"cart", cart_json},
-                        {"proudct", product_json},
+                        {"product", product_json},
                         {"sellingPrice", info.getSellingPrice()}};
 }
 } // namespace detail
