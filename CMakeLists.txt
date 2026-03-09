@@ -1,16 +1,23 @@
-cmake_minimum_required(VERSION 3.19)
-project(developer_joyofdelivery_cpp)
+cmake_minimum_required(VERSION 3.23)
+project(developer_delivery_cpp)
 
-list(APPEND CMAKE_MODULE_PATH ${CMAKE_BINARY_DIR})
 set(CMAKE_CXX_STANDARD 17)
-
-find_package(Boost REQUIRED)
-find_package(nlohmann_json REQUIRED)
-find_package(Threads)
-
-add_subdirectory(rest)
-add_executable(app main.cpp)
-target_link_libraries(app PRIVATE nlohmann_json::nlohmann_json)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 enable_testing()
+
+add_subdirectory(rest)
+
+include(FetchContent)
+FetchContent_Declare(
+    json
+    URL https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz
+    DOWNLOAD_EXTRACT_TIMESTAMP true
+)
+FetchContent_MakeAvailable(json)
+
+add_executable(tw_delivery main.cpp)
+target_link_libraries(tw_delivery PRIVATE nlohmann_json::nlohmann_json)
+
 add_subdirectory(tests)
