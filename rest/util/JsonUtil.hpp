@@ -16,8 +16,8 @@ auto to_json(Product product) {
 }
 
 auto to_json(const Outlet &store) {
-  return nlohmann::json{{"outletId", store.getOutletId()},
-                        {"outletName", store.getName()}};
+  return nlohmann::json{{"outletId", store.outletId},
+                        {"outletName", store.name}};
 }
 
 auto to_json(const Cart &cart) {

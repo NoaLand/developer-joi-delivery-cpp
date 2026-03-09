@@ -82,17 +82,9 @@ GroceryStore SeedData::createStore(const std::string &outletName,
 User SeedData::createUser(const std::string &userId,
                           const std::string &firstName,
                           const std::string &lastName) {
-  User user;
-  user.setUserId(userId);
-  user.setFirstName(firstName);
-  user.setLastName(lastName);
-  user.setEmail(firstName + "." + lastName + "@gmail.com");
-  user.setPhoneNumber(std::to_string(getRandomNumberUsingNextInt(100000000, 900000000)));
-
-  return user;
-  // return User(
-  //     userId, firstName, lastName, firstName + "." + lastName + "@gmail.com",
-  //     std::to_string(getRandomNumberUsingNextInt(100000000, 900000000)));
+  return {
+      userId, firstName, lastName, firstName + "." + lastName + "@gmail.com",
+      std::to_string(getRandomNumberUsingNextInt(100000000, 900000000))};
 }
 
 int SeedData::getRandomNumberUsingNextInt(int min, int max) {

@@ -21,16 +21,10 @@ protected:
 
         products.push_back(product1);
 
-        User user1;
-        user1.setUserId("user1");
-        user1.setFirstName("John");
-        user1.setLastName("Doe");
+        User user1{"user1", "John", "Doe"};
         users.push_back(user1);
 
-        User user2;
-        user2.setUserId("user2");
-        user2.setFirstName("Rachel");
-        user2.setLastName("Zane");
+        User user2{"user2", "Rachel", "Zane"};
         users.push_back(user2);
         
         // Initialize UserService and ProductService
@@ -59,7 +53,7 @@ protected:
 TEST_F(MockCartServiceTest, AddProductToCartForUser_ValidInput) {
 
     AddProductRequest request;
-    request.setUserId(users[0].getUserId());
+    request.setUserId(users[0].userId);
     request.setOutletId("store1");
     request.setProductId(products[0].productId);
 

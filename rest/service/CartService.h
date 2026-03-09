@@ -66,6 +66,6 @@ private:
   ProductService productService;
 
   Cart &fetchCartForUser(const User &user) {
-    return userCarts.at(user.getUserId()); // throws if not found
+    return userCarts.at(user.userId); // throws if not found
   }
 };

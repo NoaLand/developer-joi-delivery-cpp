@@ -13,7 +13,7 @@ public:
   // Return optional to handle "not found" instead of null
   std::optional<User> fetchUserById(const std::string &userId) {
     for (const auto &user : users) {
-      if (user.getUserId() == userId) {
+      if (user.userId == userId) {
         return user;
       }
     }
