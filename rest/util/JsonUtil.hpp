@@ -10,9 +10,9 @@
 
 namespace detail {
 auto to_json(Product product) {
-  return nlohmann::json{{"productId", product.getProductId()},
-                        {"productName", product.getProductName()},
-                        {"mrp", product.getMrp()}};
+  return nlohmann::json{{"productId", product.productId},
+                        {"productName", product.productName},
+                        {"mrp", product.mrp}};
 }
 
 auto to_json(const Outlet &store) {

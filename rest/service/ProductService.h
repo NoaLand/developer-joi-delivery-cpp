@@ -15,7 +15,7 @@ public:
   std::optional<GroceryProduct> getProduct(const std::string &productId,
                                            const std::string &outletId) {
     for (const auto &groceryProduct : products) {
-      if (groceryProduct.getProductId() == productId &&
+      if (groceryProduct.productId == productId &&
           groceryProduct.getStoreId() == outletId) {
         return groceryProduct;
       }

@@ -61,11 +61,11 @@ TEST_F(MockCartServiceTest, AddProductToCartForUser_ValidInput) {
     AddProductRequest request;
     request.setUserId(users[0].getUserId());
     request.setOutletId("store1");
-    request.setProductId(products[0].getProductId());
+    request.setProductId(products[0].productId);
 
     CartProductInfo cartProductInfo = cartService->addProductToCartForUser(request);
 
-    EXPECT_EQ(cartProductInfo.getProduct().getProductId(), "product1");
+    EXPECT_EQ(cartProductInfo.getProduct().productId, "product1");
     EXPECT_EQ(cartProductInfo.getSellingPrice(), 100.0); // Assuming selling price is 100.0
     EXPECT_EQ(cartProductInfo.getCart().products.size(), 1);
 }
