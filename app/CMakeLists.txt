@@ -7,5 +7,8 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(json)
 
 add_executable(tw_delivery main.cpp)
-target_link_libraries(tw_delivery PRIVATE nlohmann_json::nlohmann_json)
+target_link_libraries(tw_delivery PRIVATE
+    nlohmann_json::nlohmann_json
+    tw::delivery::dto
+)
 
