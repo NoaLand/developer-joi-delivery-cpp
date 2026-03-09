@@ -2,18 +2,18 @@
 
 #include "ProductService.h"
 #include "UserService.h"
+#include "data/SeedData.h"
 #include "domain/Cart.h"
 #include "domain/GroceryProduct.h"
 #include "domain/User.h"
 #include "dto/AddProductRequest.h"
 #include "dto/CartProductInfo.h"
-#include "seedData/SeedData.h"
 
+#include <iostream>
 #include <memory>
+#include <optional>
 #include <string>
 #include <unordered_map>
-#include <optional>
-#include <iostream>
 
 class CartService {
 public:
