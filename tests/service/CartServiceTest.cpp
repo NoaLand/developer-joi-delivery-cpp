@@ -15,7 +15,7 @@
 class MockCartServiceTest : public ::testing::Test {
 protected:
     void SetUp() override {
-        GroceryStore store1("Fresh Mart", "Fresh Mart Store", "store1");
+        GroceryStore store1{"Fresh Mart", "Fresh Mart Store", "store1"};
         GroceryProduct product1 = SeedData::createGroceryProduct("Apple", "product1",  store1);
         product1.sellingPrice = 100.0;
 

@@ -76,7 +76,7 @@ Cart SeedData::createCartForUser(const std::string &userId,
 GroceryStore SeedData::createStore(const std::string &outletName,
                                    const std::string &description,
                                    const std::string &storeId) {
-  return GroceryStore(outletName, description, storeId);
+  return {outletName, description, storeId};
 }
 
 User SeedData::createUser(const std::string &userId,
@@ -110,7 +110,7 @@ GroceryProduct SeedData::createGroceryProduct(const std::string &productName,
   grocery.productName = productName;
   grocery.mrp = 10.5f;
   grocery.weight = 500.0f;
-  grocery.storeId = store.getOutletId();
+  grocery.storeId = store.outletId;
   grocery.threshold = 10;
   grocery.availableStock = 30;
 
