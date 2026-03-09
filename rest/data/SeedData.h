@@ -109,10 +109,10 @@ GroceryProduct SeedData::createGroceryProduct(const std::string &productName,
   grocery.productId = productId;
   grocery.productName = productName;
   grocery.mrp = 10.5f;
-  grocery.setWeight(500.0f);
-  grocery.setStoreId(store.getOutletId());
-  grocery.setThreshold(10);
-  grocery.setAvailableStock(30);
+  grocery.weight = 500.0f;
+  grocery.storeId = store.getOutletId();
+  grocery.threshold = 10;
+  grocery.availableStock = 30;
 
   return grocery;
 

@@ -16,7 +16,7 @@ public:
                                            const std::string &outletId) {
     for (const auto &groceryProduct : products) {
       if (groceryProduct.productId == productId &&
-          groceryProduct.getStoreId() == outletId) {
+          groceryProduct.storeId == outletId) {
         return groceryProduct;
       }
     }

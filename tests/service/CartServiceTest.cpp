@@ -17,7 +17,7 @@ protected:
     void SetUp() override {
         GroceryStore store1("Fresh Mart", "Fresh Mart Store", "store1");
         GroceryProduct product1 = SeedData::createGroceryProduct("Apple", "product1",  store1);
-        product1.setSellingPrice(100.0);
+        product1.sellingPrice = 100.0;
 
         products.push_back(product1);
 

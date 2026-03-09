@@ -50,7 +50,7 @@ public:
 
     cartProductInfo.setCart(cart);
     cartProductInfo.setProduct(gproduct);
-    cartProductInfo.setSellingPrice(gproduct.getSellingPrice());
+    cartProductInfo.setSellingPrice(gproduct.sellingPrice);
 
     return cartProductInfo;
   }
