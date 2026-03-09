@@ -7,7 +7,7 @@
 #include "service/ProductService.h"
 #include "service/UserService.h"
 
-#include "../rest/util/JsonUtil.hpp"
+#include "util/JsonUtil.hpp"
 
 UserService user_service{};
 ProductService product_service{};

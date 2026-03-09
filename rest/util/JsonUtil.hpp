@@ -1,18 +1,12 @@
 #pragma once
 
 #include <algorithm>
-#include <iostream>
 #include <string>
 #include <vector>
-
-#include "../domain/Outlet.h"
-
 #include <nlohmann/json.hpp>
 
-#include "../dto/AddProductRequest.h"
-#include "../dto/CartProductInfo.h"
-
-#include "../service/CartService.h"
+#include "domain/Outlet.h"
+#include "dto/CartProductInfo.h"
 
 namespace detail {
 auto to_json(Product product) {
