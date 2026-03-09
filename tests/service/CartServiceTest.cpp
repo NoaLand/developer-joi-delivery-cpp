@@ -1,12 +1,12 @@
-#include "../../rest/service/CartService.h"
-#include "../../rest/service/ProductService.h"
-#include "../../rest/service/UserService.h"
+#include "service/CartService.h"
+#include "service/ProductService.h"
+#include "service/UserService.h"
 
-#include "../../rest/domain/Cart.h"
-#include "../../rest/domain/Outlet.h"
-#include "../../rest/domain/Product.h"
-#include "../../rest/dto/AddProductRequest.h"
-#include "../../rest/dto/CartProductInfo.h"
+#include "domain/Cart.h"
+#include "domain/Outlet.h"
+#include "domain/Product.h"
+#include "dto/AddProductRequest.h"
+#include "dto/CartProductInfo.h"
 #include <gtest/gtest.h>
 
 #include <vector>

@@ -1,11 +1,11 @@
 #include <iostream>
 
-#include "../rest/dto/AddProductRequest.h"
-#include "../rest/dto/CartProductInfo.h"
+#include "dto/AddProductRequest.h"
+#include "dto/CartProductInfo.h"
 
-#include "../rest/service/CartService.h"
-#include "../rest/service/ProductService.h"
-#include "../rest/service/UserService.h"
+#include "service/CartService.h"
+#include "service/ProductService.h"
+#include "service/UserService.h"
 
 #include "../rest/util/JsonUtil.hpp"
 

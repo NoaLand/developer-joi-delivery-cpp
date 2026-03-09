@@ -1,6 +1,6 @@
 #pragma once
-#include "../domain/User.h"
-#include "../seedData/SeedData.h"
+#include "domain/User.h"
+#include "seedData/SeedData.h"
 #include <optional>
 #include <string>
 #include <vector>

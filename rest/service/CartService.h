@@ -2,12 +2,12 @@
 
 #include "ProductService.h"
 #include "UserService.h"
-#include "../domain/Cart.h"
-#include "../domain/GroceryProduct.h"
-#include "../domain/User.h"
-#include "../dto/AddProductRequest.h"
-#include "../dto/CartProductInfo.h"
-#include "../seedData/SeedData.h"
+#include "domain/Cart.h"
+#include "domain/GroceryProduct.h"
+#include "domain/User.h"
+#include "dto/AddProductRequest.h"
+#include "dto/CartProductInfo.h"
+#include "seedData/SeedData.h"
 
 #include <memory>
 #include <string>
