@@ -11,6 +11,7 @@ add_executable(tw_delivery_test service/CartServiceTest.cpp)
 target_link_libraries(tw_delivery_test PRIVATE
     gtest_main
     tw::delivery::dto
+    tw::delivery::data
 )
 
 include(GoogleTest)

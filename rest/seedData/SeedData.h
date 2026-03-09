@@ -1,8 +1,8 @@
 #pragma once
-#include "../domain/Cart.h"
-#include "../domain/GroceryProduct.h"
-#include "../domain/GroceryStore.h"
-#include "../domain/User.h"
+#include "domain/Cart.h"
+#include "domain/GroceryProduct.h"
+#include "domain/GroceryStore.h"
+#include "domain/User.h"
 #include <random>
 #include <string>
 #include <unordered_map>
