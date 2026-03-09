@@ -9,5 +9,4 @@ enable_testing()
 
 add_subdirectory(rest)
 add_subdirectory(app)
-
 add_subdirectory(tests)
