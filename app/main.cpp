@@ -1,13 +1,13 @@
 #include <iostream>
 
-#include "rest/dto/AddProductRequest.h"
-#include "rest/dto/CartProductInfo.h"
+#include "../rest/dto/AddProductRequest.h"
+#include "../rest/dto/CartProductInfo.h"
 
-#include "rest/service/CartService.h"
-#include "rest/service/ProductService.h"
-#include "rest/service/UserService.h"
+#include "../rest/service/CartService.h"
+#include "../rest/service/ProductService.h"
+#include "../rest/service/UserService.h"
 
-#include "rest/util/JsonUtil.hpp"
+#include "../rest/util/JsonUtil.hpp"
 
 UserService user_service{};
 ProductService product_service{};
