@@ -2,10 +2,10 @@
 
 #include "ProductService.h"
 #include "UserService.h"
+#include "core/Cart.h"
+#include "core/GroceryProduct.h"
+#include "core/User.h"
 #include "data/SeedData.h"
-#include "domain/Cart.h"
-#include "domain/GroceryProduct.h"
-#include "domain/User.h"
 #include "dto/AddProductRequest.h"
 #include "dto/CartProductInfo.h"
 

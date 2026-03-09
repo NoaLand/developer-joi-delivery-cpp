@@ -5,7 +5,7 @@
 #include <vector>
 #include <nlohmann/json.hpp>
 
-#include "domain/Outlet.h"
+#include "core/Outlet.h"
 #include "dto/CartProductInfo.h"
 
 namespace detail {

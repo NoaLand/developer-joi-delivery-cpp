@@ -5,6 +5,6 @@ target_include_directories(tw_delivery_dto INTERFACE
     $<INSTALL_INTERFACE:include>
 )
 
-target_link_libraries(tw_delivery_dto INTERFACE tw::delivery::domain)
+target_link_libraries(tw_delivery_dto INTERFACE tw::delivery::core)
 
 add_library(tw::delivery::dto ALIAS tw_delivery_dto)

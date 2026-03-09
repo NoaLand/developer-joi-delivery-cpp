@@ -2,9 +2,8 @@
 #include "service/ProductService.h"
 #include "service/UserService.h"
 
-#include "domain/Cart.h"
-#include "domain/Outlet.h"
-#include "domain/Product.h"
+#include "core/Cart.h"
+#include "core/Product.h"
 #include "dto/AddProductRequest.h"
 #include "dto/CartProductInfo.h"
 #include <gtest/gtest.h>

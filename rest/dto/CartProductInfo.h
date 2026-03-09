@@ -1,7 +1,7 @@
 #pragma once
 
-#include "domain/Cart.h"
-#include "domain/Product.h"
+#include "core/Cart.h"
+#include "core/Product.h"
 
 class CartProductInfo {
 public:

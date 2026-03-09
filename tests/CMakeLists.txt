@@ -10,7 +10,7 @@ FetchContent_MakeAvailable(googletest)
 add_executable(tw_delivery_test service/CartServiceTest.cpp)
 target_link_libraries(tw_delivery_test PRIVATE
     gtest_main
-    tw::delivery::domain
+    tw::delivery::core
     tw::delivery::dto
     tw::delivery::data
     tw::delivery::service

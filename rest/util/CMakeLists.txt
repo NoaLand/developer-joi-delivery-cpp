@@ -6,7 +6,7 @@ target_include_directories(tw_delivery_util INTERFACE
 )
 
 target_link_libraries(tw_delivery_util INTERFACE
-    tw::delivery::domain
+    tw::delivery::core
     tw::delivery::dto
 )
 

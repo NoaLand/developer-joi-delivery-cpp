@@ -1,6 +1,6 @@
 #pragma once
+#include "core/GroceryProduct.h"
 #include "data/SeedData.h"
-#include "domain/GroceryProduct.h"
 #include <optional>
 #include <string>
 #include <vector>
