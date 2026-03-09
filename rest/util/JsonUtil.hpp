@@ -22,13 +22,13 @@ auto to_json(const Outlet &store) {
 
 auto to_json(const Cart &cart) {
   auto product_json_array = nlohmann::json::array();
-  std::vector<Product> products = cart.getProducts();
+  std::vector<std::shared_ptr<Product>> products = cart.products;
   std::transform(products.begin(), products.end(),
                  std::back_inserter(product_json_array),
-                 [](const Product &p) { return detail::to_json(p); });
+                 [](const auto& p) { return detail::to_json(*p); });
 
-  return nlohmann::json{{"cartId", cart.getCartId()},
-                        {"outlet", detail::to_json(cart.getOutlet())},
+  return nlohmann::json{{"cartId", cart.cartId},
+                        {"outlet", detail::to_json(*cart.outlet)},
                         {"products", product_json_array}};
 }
 auto to_json(const CartProductInfo &info) {

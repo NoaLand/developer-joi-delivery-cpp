@@ -69,12 +69,8 @@ Cart SeedData::createCartForUser(const std::string &userId,
                                  const std::string &firstName,
                                  const std::string &lastName,
                                  const std::string &cartId) {
-  Cart cart;
-  cart.setCartId(cartId);
-  cart.setOutlet(store101);
-  cart.setUserId(userId);
-  return cart;
-  // return Cart(cartId, store101, std::string("user101"));
+    // TODO: remove make_shared later
+    return {cartId, userId, std::make_shared<GroceryStore>(store101)};
 }
 
 GroceryStore SeedData::createStore(const std::string &outletName,

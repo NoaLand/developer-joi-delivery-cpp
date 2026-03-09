@@ -67,15 +67,15 @@ TEST_F(MockCartServiceTest, AddProductToCartForUser_ValidInput) {
 
     EXPECT_EQ(cartProductInfo.getProduct().getProductId(), "product1");
     EXPECT_EQ(cartProductInfo.getSellingPrice(), 100.0); // Assuming selling price is 100.0
-    EXPECT_EQ(cartProductInfo.getCart().getProducts().size(), 1);
+    EXPECT_EQ(cartProductInfo.getCart().products.size(), 1);
 }
 
 TEST_F(MockCartServiceTest, GetCartForUser_ValidUser) {
     Cart cart = cartService->getCartForUser("user1");
 
-    EXPECT_EQ(cart.getCartId(), "cart101");
-    EXPECT_EQ(cart.getUserId(), "user1");
-    EXPECT_EQ(cart.getProducts().size(), 0); // Initially, the cart should be empty
+    EXPECT_EQ(cart.cartId, "cart101");
+    EXPECT_EQ(cart.userId, "user1");
+    EXPECT_EQ(cart.products.size(), 0); // Initially, the cart should be empty
 }
 
 TEST_F(MockCartServiceTest, GetCartForUser_InvalidUser) {

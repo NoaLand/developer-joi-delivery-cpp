@@ -45,8 +45,8 @@ public:
     }
 
     GroceryProduct gproduct = product.value();
-    //cart.getProducts().push_back(product.value());
-    cart.addProduct(gproduct);
+    // TODO: remove make_shared later
+    cart.products.emplace_back(std::make_shared<GroceryProduct>(gproduct));
 
     cartProductInfo.setCart(cart);
     cartProductInfo.setProduct(gproduct);
