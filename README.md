@@ -56,74 +56,48 @@ To build the project, one need to meet the below set of techical stack requireme
 
 Check [here](https://cmake.org/download/) for installation if you get a older version.
 
-2. Conan 2.0 above is **required**.
-
-Check [here](https://docs.conan.io/2/installation.html) for installation if you get a older version.
-
-The project makes use of Conan to help you out carrying some common tasks such as building the project or running it.
-
-Technically, Conan is not must have, but in order to simplify environment setup, following guideline is based on Conan.
-
 ### Build the project
 
-0. Setup a profile for Conan, if this is the first time you get Conan 2.x run on your machine.
+This project uses standard Modern CMake and automatically manages lightweight dependencies (e.g., GoogleTest) via `FetchContent`.
+
+#### 1. Generate build system for this repository
 
 ```shell
-conan profile detect
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
 ```
 
-Now, assuming you are already at the root of this repository, follow:
-
-1. Install or build the dependencies
+#### 2. Build this repository
 
 ```shell
-conan install . --output-folder=build -s build_type=Debug --build=missing
+cmake --build build -j4
 ```
 
-2. Generate build system for this repository
-
-```shell
-cmake --preset conan-debug
-```
-
-> ☀️ If you are building on **Windows with Visual Studio** (Generator), please use `conan-default` instead of, like:
->
-> ```shell
-> cmake --preset conan-default
-> ```
-
-3. Build this repository
-
-```shell
-mkdir -p build
-cd build
-cmake ..
-make
-```
-
-> ☀️ If you are building on **Windows with Visual Studio** (Generator), and prefer IDE, you could find a generate project file in `build` directory and open it with Visual Studio for building and test running.
-
+*Note:* ☀️ If you are building on **Windows with Visual Studio** (Generator), and prefer IDE, you could find a generate project file in `build` directory and open it with Visual Studio for building and test running.
 > ⚡️With option `-j<number>` (e.g. -j4 ) could enable parallel build job, which could usually accelerate your build.
 
 ### Run the tests
 
-Unit tests can be executed as follows.
+We use CTest to manage our test suites.
 
-- Run unit tests only
+- Run unit tests.
 
-  ```shell
-  $ ctest .
-  ```
+```shell
+cd build/
+ctest
+```
+
+- Optionally, Use `--verbose` flag with ctest for detailed test results.
+
+```shell
+cd build/
+ctest . --verbose
+```
 
 ### Run the application
-  ```shell
-  $ ./app
-  ```
-
-Below are the outputs from execution of 
+```shell
+cd build/
+./app/tw_delivery
 ```
-./app
-``` 
 
 #### Sample Execution Output 01:
 ```
@@ -137,48 +111,52 @@ Enter User ID: user101
 Enter Product ID: product101
 Enter Outlet ID: store101
 {
-    "cart": {
-        "cartId": "cart101",
-        "outlet": {
-            "outletId": "store101",
-            "outletName": "Fresh Picks"
-        },
-        "products": [
-            {
-                "mrp": 10.5,
-                "productId": "product101",
-                "productName": "Wheat Bread"
-            }
-        ]
+    "cartId": "cart101",
+    "outlet": {
+        "description": "Fresh Picks Store",
+        "inventory": [],
+        "name": "Fresh Picks",
+        "outletId": "store101"
     },
-    "product": {
-        "mrp": 10.5,
-        "productId": "product101",
-        "productName": "Wheat Bread"
-    },
-    "sellingPrice": 1.5725600291792398e+25
+    "products": [
+        {
+            "availableStock": 30,
+            "discount": 0.0,
+            "expiryDate": 0,
+            "mrp": 10.5,
+            "productId": "product101",
+            "productName": "Wheat Bread",
+            "sellingPrice": 0.0,
+            "storeId": "store101",
+            "threshold": 10,
+            "weight": 500.0
+        }
+    ],
+    "userId": "user101"
 }
 ```
 
- #### Sample Execution Output 02:
+#### Sample Execution Output 02:
  ```
- Grocery Store Management CLI
+Grocery Store Management CLI
 1. Add product to Cart for a user
 2. To View Cart of a specific user
 3. Exit
 Select an option (1-3): 2
 Viewing cart of a specific user...
 Enter User ID: user102
-Enter User ID: user102
 User ID: user102
 -- view query - user id user102
 {
     "cartId": "cart102",
     "outlet": {
-        "outletId": "store101",
-        "outletName": "Fresh Picks"
+        "description": "Fresh Picks Store",
+        "inventory": [],
+        "name": "Fresh Picks",
+        "outletId": "store101"
     },
-    "products": []
+    "products": [],
+    "userId": "user102"
 }
 ```
 
