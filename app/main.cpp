@@ -42,7 +42,7 @@ int main() {
     std::unordered_map<int, std::function<void(tw::delivery::service::CartService&)>> menu_routes {
         {1, addProductToCartForUser},
         {2, viewCartInfo},
-        {3, [](auto& _) { std::cout << "Exiting the application...\n"; exit(0); }}
+        {3, [](auto& _) { std::cout << "Exiting the application...\n"; }}
     };
 
 
