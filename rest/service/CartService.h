@@ -19,11 +19,6 @@ class CartService {
     ProductService productService;
 
 public:
-    CartService(const CartService& cs) {
-        this->userService = cs.userService;
-        this->productService = cs.productService;
-    }
-
     CartService(UserService uService, ProductService pService)
         : userService{std::move(uService)}, productService{std::move(pService)} {}
 
