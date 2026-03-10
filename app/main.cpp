@@ -1,4 +1,6 @@
 #include <iostream>
+#include <unordered_map>
+#include <functional>
 
 #include "dto/AddProductRequest.h"
 
@@ -38,6 +40,12 @@ void viewCartInfo(tw::delivery::service::CartService& cart_service) {
 
 int main() {
     tw::delivery::service::CartService cart_service{{}, {}};
+    std::unordered_map<int, std::function<void(tw::delivery::service::CartService&)>> menu_routes {
+        {1, addProductToCartForUser},
+        {2, viewCartInfo},
+        {3, [](auto& _) { std::cout << "Exiting the application...\n"; exit(0); }}
+    };
+
 
     std::cout << "Grocery Store Management CLI\n";
     std::cout << "1. Add product to Cart for a user\n";
@@ -46,20 +54,12 @@ int main() {
     std::cout << "Select an option (1-3): ";
 
     int option;
-    std::cin >> option;
-    switch(option) {
-        case 1:
-            addProductToCartForUser(cart_service);
-            break;
-        case 2:
-            viewCartInfo(cart_service);
-            break;
-        case 3:
-            std::cout << "Exiting the application...\n";
-            break;
-        default:
-            std::cout << "Invalid option selected.\n";
-            break;
+    if (std::cin >> option && menu_routes.count(option)) {
+        menu_routes[option](cart_service);
+    } else {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout << "Invalid Input!\n";
     }
 
     return 0;
