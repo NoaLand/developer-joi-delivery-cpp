@@ -11,6 +11,6 @@ target_link_libraries(tw_delivery PRIVATE
     nlohmann_json::nlohmann_json
     tw::delivery::dto
     tw::delivery::service
-    tw::delivery::util
+    tw::delivery::infra
 )
 
