@@ -35,7 +35,7 @@ public:
         std::to_string(getRandomNumberUsingNextInt(100000000, 900000000))
     };
     static std::vector<std::shared_ptr<Product>> products;
-    static std::vector<User> users;
+    inline static std::vector<User> users{user101, user102};
 
 };
 
@@ -46,8 +46,6 @@ std::vector<std::shared_ptr<Product>> SeedData::products = {
     SeedData::createGroceryProduct("Crackers", "product103",
                                    SeedData::store101)
 };
-
-std::vector<User> SeedData::users = {SeedData::user101, SeedData::user102};
 
 inline int SeedData::getRandomNumberUsingNextInt(int min, int max) {
     static std::random_device rd;
