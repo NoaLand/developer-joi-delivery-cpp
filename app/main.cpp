@@ -8,9 +8,9 @@
 
 #include "infra/adapters/JsonAdapter.hpp"
 
-UserService user_service{};
-ProductService product_service{};
-CartService cart_service{user_service, product_service};
+tw::delivery::service::UserService user_service{};
+tw::delivery::service::ProductService product_service{};
+tw::delivery::service::CartService cart_service{user_service, product_service};
 
 void addProductToCartForUser(){
     std::cout << "Adding product to Cart for a user\n";

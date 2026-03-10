@@ -25,16 +25,16 @@ protected:
         users.push_back(user2);
         
         // Initialize UserService and ProductService
-        userService = std::make_unique<UserService>(users);
-        productService = std::make_unique<ProductService>(products);
-        cartService = std::make_unique<CartService>(cartForUsers, *userService, *productService);
+        userService = std::make_unique<tw::delivery::service::UserService>(users);
+        productService = std::make_unique<tw::delivery::service::ProductService>(products);
+        cartService = std::make_unique<tw::delivery::service::CartService>(cartForUsers, *userService, *productService);
     }
 
     void TearDown() override {}
 
-    std::unique_ptr<UserService> userService;   
-    std::unique_ptr<ProductService> productService;
-    std::unique_ptr<CartService> cartService;
+    std::unique_ptr<tw::delivery::service::UserService> userService;
+    std::unique_ptr<tw::delivery::service::ProductService> productService;
+    std::unique_ptr<tw::delivery::service::CartService> cartService;
 
     std::vector<std::shared_ptr<Product>> products;
     std::vector<User> users;
