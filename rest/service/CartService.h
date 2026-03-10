@@ -30,17 +30,17 @@ public:
   CartProductInfo
   addProductToCartForUser(const AddProductRequest &addProductRequest) {
     CartProductInfo cartProductInfo;
-    auto user = userService.fetchUserById(addProductRequest.getUserId());
+    auto user = userService.fetchUserById(addProductRequest.userId);
     if(!user.has_value()) {
-      std::cerr << "User not found: " << addProductRequest.getUserId() << std::endl;
+      std::cerr << "User not found: " << addProductRequest.userId << std::endl;
       return cartProductInfo;
     }
     Cart &cart = fetchCartForUser(user.value());
 
     auto product = productService.getProduct(
-        addProductRequest.getProductId(), addProductRequest.getOutletId());
+        addProductRequest.productId, addProductRequest.outletId);
     if(!product.has_value()) {
-      std::cerr << "Product not found: " << addProductRequest.getOutletId() << std::endl;
+      std::cerr << "Product not found: " << addProductRequest.outletId << std::endl;
       return cartProductInfo;
     }
 

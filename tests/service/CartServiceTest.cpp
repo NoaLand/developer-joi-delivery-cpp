@@ -52,10 +52,7 @@ protected:
 
 TEST_F(MockCartServiceTest, AddProductToCartForUser_ValidInput) {
 
-    AddProductRequest request;
-    request.setUserId(users[0].userId);
-    request.setOutletId("store1");
-    request.setProductId(products[0].productId);
+    AddProductRequest request{users.at(0).userId, "store1", products.at(0).productId};
 
     CartProductInfo cartProductInfo = cartService->addProductToCartForUser(request);
 

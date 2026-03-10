@@ -23,12 +23,7 @@ void addProductToCartForUser(){
     std::cout << "Enter Outlet ID: ";
     std::cin >> outletId;
 
-    AddProductRequest addProductRequest;
-    addProductRequest.setUserId(userId);
-    addProductRequest.setOutletId(outletId);
-    addProductRequest.setProductId(productId);
-
-    auto cartProductInfo = cart_service.addProductToCartForUser(addProductRequest);
+    auto cartProductInfo = cart_service.addProductToCartForUser({userId, outletId, productId});
     std::cout << tw::delivery::infra::adapter::json::serialize(cartProductInfo) << std::endl;
 }
 
