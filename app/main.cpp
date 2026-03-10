@@ -8,11 +8,7 @@
 
 #include "infra/adapters/JsonAdapter.hpp"
 
-tw::delivery::service::UserService user_service{};
-tw::delivery::service::ProductService product_service{};
-tw::delivery::service::CartService cart_service{user_service, product_service};
-
-void addProductToCartForUser(){
+void addProductToCartForUser(tw::delivery::service::CartService& cart_service){
     std::cout << "Adding product to Cart for a user\n";
     std::string userId, outletId, productId;
     std::cout << "Enter User ID: ";
@@ -27,7 +23,7 @@ void addProductToCartForUser(){
 }
 
 // Placeholder function to view cart of a specific user
-void viewCartInfo() {
+void viewCartInfo(tw::delivery::service::CartService& cart_service) {
     std::cout << "Viewing cart of a specific user...\n";
     std::string userId;
     std::cout << "Enter User ID: ";
@@ -41,6 +37,8 @@ void viewCartInfo() {
 }
 
 int main() {
+    tw::delivery::service::CartService cart_service{{}, {}};
+
     std::cout << "Grocery Store Management CLI\n";
     std::cout << "1. Add product to Cart for a user\n";
     std::cout << "2. To View Cart of a specific user\n";
@@ -51,10 +49,10 @@ int main() {
     std::cin >> option;
     switch(option) {
         case 1:
-            addProductToCartForUser();
+            addProductToCartForUser(cart_service);
             break;
         case 2:
-            viewCartInfo();
+            viewCartInfo(cart_service);
             break;
         case 3:
             std::cout << "Exiting the application...\n";
