@@ -71,7 +71,7 @@ std::vector<std::shared_ptr<Product>> SeedData::products = {
 std::vector<User> SeedData::users = {SeedData::user101, SeedData::user102};
 
 // Factory method implementations
-Cart SeedData::createCartForUser(const std::string& userId,
+inline Cart SeedData::createCartForUser(const std::string& userId,
                                         const std::string& firstName,
                                         const std::string& lastName,
                                         const std::string& cartId) {
@@ -79,13 +79,13 @@ Cart SeedData::createCartForUser(const std::string& userId,
     return {cartId, userId, std::make_shared<GroceryStore>(store101)};
 }
 
-GroceryStore SeedData::createStore(const std::string& outletName,
+inline GroceryStore SeedData::createStore(const std::string& outletName,
                                           const std::string& description,
                                           const std::string& storeId) {
     return {outletName, description, storeId};
 }
 
-User SeedData::createUser(const std::string& userId,
+inline User SeedData::createUser(const std::string& userId,
                                  const std::string& firstName,
                                  const std::string& lastName) {
     return {
@@ -94,16 +94,16 @@ User SeedData::createUser(const std::string& userId,
     };
 }
 
-int SeedData::getRandomNumberUsingNextInt(int min, int max) {
+inline int SeedData::getRandomNumberUsingNextInt(int min, int max) {
     static std::random_device rd;
     static std::mt19937 gen(rd());
     std::uniform_int_distribution<> dist(min, max - 1);
     return dist(gen);
 }
 
-std::shared_ptr<GroceryProduct> SeedData::createGroceryProduct(const std::string& productName,
-                                                               const std::string& productId,
-                                                               const GroceryStore& store) {
+inline std::shared_ptr<GroceryProduct> SeedData::createGroceryProduct(const std::string& productName,
+                                                                      const std::string& productId,
+                                                                      const GroceryStore& store) {
     auto grocery = std::make_shared<GroceryProduct>();
     grocery->productId = productId;
     grocery->productName = productName;
