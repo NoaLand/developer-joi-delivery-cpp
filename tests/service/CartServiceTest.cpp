@@ -12,7 +12,7 @@
 class MockCartServiceTest : public ::testing::Test {
 protected:
     void SetUp() override {
-        GroceryStore store1{"Fresh Mart", "Fresh Mart Store", "store1"};
+        const auto store1 = std::make_shared<GroceryStore>("Fresh Mart", "Fresh Mart Store", "store1");
         const auto product1 = SeedData::createGroceryProduct("Apple", "product1",  store1);
         product1->sellingPrice = 100.0;
 

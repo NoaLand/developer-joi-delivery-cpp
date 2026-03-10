@@ -12,8 +12,8 @@ class SeedData {
 public:
     // Static data members
     static std::unordered_map<std::string, Cart> cartForUsers;
-    static GroceryStore store101;
-    static GroceryStore store102;
+    static std::shared_ptr<GroceryStore> store101;
+    static std::shared_ptr<GroceryStore> store102;
     static User user101;
     static User user102;
     static std::vector<std::shared_ptr<Product>> products;
@@ -25,7 +25,7 @@ public:
                                   const std::string& lastName,
                                   const std::string& cartId);
 
-    static GroceryStore createStore(const std::string& outletName,
+    static std::shared_ptr<GroceryStore> createStore(const std::string& outletName,
                                     const std::string& description,
                                     const std::string& storeId);
 
@@ -38,13 +38,13 @@ public:
     // private:
     static std::shared_ptr<GroceryProduct> createGroceryProduct(const std::string& productName,
                                                                 const std::string& productId,
-                                                                const GroceryStore& store);
+                                                                const std::shared_ptr<GroceryStore>& store);
 };
 
 // Initialize static members
-GroceryStore SeedData::store101 =
+std::shared_ptr<GroceryStore> SeedData::store101 =
     SeedData::createStore("Fresh Picks", "Fresh Picks Store", "store101");
-GroceryStore SeedData::store102 =
+std::shared_ptr<GroceryStore> SeedData::store102 =
     SeedData::createStore("Natural Choice", "Natural Choice Store", "store102");
 User SeedData::user101 = SeedData::createUser("user101", "John", "Doe");
 User SeedData::user102 = SeedData::createUser("user102", "Rachel", "Zane");
@@ -75,14 +75,13 @@ inline Cart SeedData::createCartForUser(const std::string& userId,
                                         const std::string& firstName,
                                         const std::string& lastName,
                                         const std::string& cartId) {
-    // TODO: remove make_shared later
-    return {cartId, userId, std::make_shared<GroceryStore>(store101)};
+    return {cartId, userId, store101};
 }
 
-inline GroceryStore SeedData::createStore(const std::string& outletName,
+inline std::shared_ptr<GroceryStore> SeedData::createStore(const std::string& outletName,
                                           const std::string& description,
                                           const std::string& storeId) {
-    return {outletName, description, storeId};
+    return std::make_shared<GroceryStore>(outletName, description, storeId);
 }
 
 inline User SeedData::createUser(const std::string& userId,
@@ -103,13 +102,13 @@ inline int SeedData::getRandomNumberUsingNextInt(int min, int max) {
 
 inline std::shared_ptr<GroceryProduct> SeedData::createGroceryProduct(const std::string& productName,
                                                                       const std::string& productId,
-                                                                      const GroceryStore& store) {
+                                                                      const std::shared_ptr<GroceryStore>& store) {
     auto grocery = std::make_shared<GroceryProduct>();
     grocery->productId = productId;
     grocery->productName = productName;
     grocery->mrp = 10.5f;
     grocery->weight = 500.0f;
-    grocery->storeId = store.outletId;
+    grocery->storeId = store->outletId;
     grocery->threshold = 10;
     grocery->availableStock = 30;
 
