@@ -15,7 +15,7 @@ public:
     explicit UserService(std::vector<User> users) : users{std::move(users)} {}
 
     // Return optional to handle "not found" instead of null
-    [[nodiscard]] std::optional<User> fetchUserById(const std::string& userId) const {
+    [[nodiscard]] std::optional<User> fetchUserById(std::string_view userId) const {
         for (const auto& user : users) {
             if (user.userId == userId) {
                 return user;
