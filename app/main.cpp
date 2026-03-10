@@ -41,7 +41,7 @@ void viewCartInfo() {
     std::cout << tw::delivery::infra::adapter::json::serialize(cart) << std::endl;
 }
 
-int main(int argc, char *argv[]) {
+int main() {
     std::cout << "Grocery Store Management CLI\n";
     std::cout << "1. Add product to Cart for a user\n";
     std::cout << "2. To View Cart of a specific user\n";
