@@ -10,12 +10,6 @@
 
 class SeedData {
 public:
-    // Factory methods
-    static Cart createCartForUser(const std::string& userId,
-                                  const std::string& firstName,
-                                  const std::string& lastName,
-                                  const std::string& cartId);
-
     static User createUser(const std::string& userId,
                            const std::string& firstName,
                            const std::string& lastName);
@@ -45,11 +39,11 @@ User SeedData::user102 = SeedData::createUser("user102", "Rachel", "Zane");
 std::unordered_map<std::string, Cart> SeedData::cartForUsers = {
     {
         "user101",
-        SeedData::createCartForUser("user101", "John", "Doe", "cart101")
+        {"cart101", "user101", store101}
     },
     {
         "user102",
-        SeedData::createCartForUser("user102", "Rachel", "Zane", "cart102")
+        {"cart102", "user102", store101}
     }
 };
 
@@ -62,14 +56,6 @@ std::vector<std::shared_ptr<Product>> SeedData::products = {
 };
 
 std::vector<User> SeedData::users = {SeedData::user101, SeedData::user102};
-
-// Factory method implementations
-inline Cart SeedData::createCartForUser(const std::string& userId,
-                                        const std::string& firstName,
-                                        const std::string& lastName,
-                                        const std::string& cartId) {
-    return {cartId, userId, store101};
-}
 
 inline User SeedData::createUser(const std::string& userId,
                                  const std::string& firstName,

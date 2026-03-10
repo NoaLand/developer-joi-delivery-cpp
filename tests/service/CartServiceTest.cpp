@@ -40,10 +40,9 @@ protected:
     std::vector<User> users;
 
     std::unordered_map<std::string, Cart> cartForUsers = {
-    {"user1",
-     SeedData::createCartForUser("user1", "John", "Doe", "cart101")},
-    {"user2",
-     SeedData::createCartForUser("user2", "Rachel", "Zane", "cart102")}};
+        {"user1", {"cart101", "user1", SeedData::store101}},
+        {"user2", {"cart102", "user2", SeedData::store101}}
+    };
 };
 
 TEST_F(MockCartServiceTest, AddProductToCartForUser_ValidInput) {
