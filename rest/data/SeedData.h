@@ -17,10 +17,10 @@ public:
         return dist(gen);
     }
 
-    static std::shared_ptr<GroceryProduct> createGroceryProduct(const std::string& productName, const std::string& productId, const std::shared_ptr<GroceryStore>& store) {
+    static std::shared_ptr<GroceryProduct> createGroceryProduct(std::string productName, std::string productId, const std::shared_ptr<GroceryStore>& store) {
         auto grocery = std::make_shared<GroceryProduct>();
-        grocery->productId = productId;
-        grocery->productName = productName;
+        grocery->productId = std::move(productId);
+        grocery->productName = std::move(productName);
         grocery->mrp = 10.5f;
         grocery->weight = 500.0f;
         grocery->storeId = store->outletId;
