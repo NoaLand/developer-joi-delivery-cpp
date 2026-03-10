@@ -2,6 +2,8 @@
 
 #include "Product.h"
 
-struct FoodProduct : Product {
-    using Product::Product;
-};
+namespace tw::delivery::core {
+    struct FoodProduct : Product {
+        using Product::Product;
+    };
+}

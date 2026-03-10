@@ -5,8 +5,10 @@
 
 #include <set>
 
-struct GroceryStore : Outlet {
-    std::set<GroceryProduct> inventory;
+namespace tw::delivery::core {
+    struct GroceryStore : Outlet {
+        std::set<GroceryProduct> inventory;
 
-    using Outlet::Outlet;
-};
+        using Outlet::Outlet;
+    };
+}

@@ -2,9 +2,10 @@
 
 #include <string>
 
-struct AddProductRequest {
-    std::string userId;
-    std::string outletId;
-    std::string productId;
-};
-
+namespace tw::delivery::dto {
+    struct AddProductRequest {
+        std::string userId;
+        std::string outletId;
+        std::string productId;
+    };
+}

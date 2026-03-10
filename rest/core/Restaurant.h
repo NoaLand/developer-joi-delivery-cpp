@@ -1,7 +1,10 @@
 #pragma once
+
 #include "Outlet.h"
 
-struct Restaurant : Outlet {
-    using Outlet::Outlet;
-}; 
+namespace tw::delivery::core {
+    struct Restaurant : Outlet {
+        using Outlet::Outlet;
+    };
+}
 

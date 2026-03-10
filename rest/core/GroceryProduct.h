@@ -4,14 +4,16 @@
 
 #include <string>
 
-struct GroceryProduct : Product {
-    float sellingPrice;
-    float weight;
-    int expiryDate;
-    int threshold;
-    int availableStock;
-    float discount;
-    std::string storeId;
+namespace tw::delivery::core {
+    struct GroceryProduct : Product {
+        float sellingPrice;
+        float weight;
+        int expiryDate;
+        int threshold;
+        int availableStock;
+        float discount;
+        std::string storeId;
 
-    using Product::Product;
-};
+        using Product::Product;
+    };
+}

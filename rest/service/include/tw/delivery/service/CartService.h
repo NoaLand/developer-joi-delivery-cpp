@@ -12,18 +12,18 @@
 
 namespace tw::delivery::service {
     class CartService {
-        std::unordered_map<std::string, Cart> userCarts{SeedData::cartForUsers};
+        std::unordered_map<std::string, core::Cart> userCarts{data::SeedData::cartForUsers};
         UserService userService;
         ProductService productService;
 
     public:
         CartService(UserService uService, ProductService pService);
-        CartService(std::unordered_map<std::string, Cart>& carts, UserService& uService, ProductService& pService);
+        CartService(std::unordered_map<std::string, core::Cart>& carts, UserService& uService, ProductService& pService);
 
-        Cart addProductToCartForUser(const AddProductRequest& addProductRequest);
-        Cart getCartForUser(std::string_view userId);
+        core::Cart addProductToCartForUser(const dto::AddProductRequest& addProductRequest);
+        core::Cart getCartForUser(std::string_view userId);
 
     private:
-        Cart& fetchCartForUser(const User& user);
+        core::Cart& fetchCartForUser(const core::User& user);
     };
 }

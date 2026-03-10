@@ -9,13 +9,13 @@
 
 namespace tw::delivery::service {
     class UserService {
-        std::vector<User> users{SeedData::users};
+        std::vector<core::User> users{data::SeedData::users};
 
     public:
         UserService() = default;
-        explicit UserService(std::vector<User> users);
+        explicit UserService(std::vector<core::User> users);
 
         // Return optional to handle "not found" instead of null
-        [[nodiscard]] std::optional<User> fetchUserById(std::string_view userId) const;
+        [[nodiscard]] std::optional<core::User> fetchUserById(std::string_view userId) const;
     };
 }

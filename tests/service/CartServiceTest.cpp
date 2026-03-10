@@ -12,16 +12,16 @@
 class MockCartServiceTest : public ::testing::Test {
 protected:
     void SetUp() override {
-        const auto store1 = std::make_shared<GroceryStore>("Fresh Mart", "Fresh Mart Store", "store1");
-        const auto product1 = SeedData::createGroceryProduct("Apple", "product1",  store1);
+        const auto store1 = std::make_shared<tw::delivery::core::GroceryStore>("Fresh Mart", "Fresh Mart Store", "store1");
+        const auto product1 = tw::delivery::data::SeedData::createGroceryProduct("Apple", "product1",  store1);
         product1->sellingPrice = 100.0;
 
         products.push_back(product1);
 
-        User user1{"user1", "John", "Doe"};
+        tw::delivery::core::User user1{"user1", "John", "Doe"};
         users.push_back(user1);
 
-        User user2{"user2", "Rachel", "Zane"};
+        tw::delivery::core::User user2{"user2", "Rachel", "Zane"};
         users.push_back(user2);
         
         // Initialize UserService and ProductService
@@ -36,29 +36,28 @@ protected:
     std::unique_ptr<tw::delivery::service::ProductService> productService;
     std::unique_ptr<tw::delivery::service::CartService> cartService;
 
-    std::vector<std::shared_ptr<Product>> products;
-    std::vector<User> users;
+    std::vector<std::shared_ptr<tw::delivery::core::Product>> products;
+    std::vector<tw::delivery::core::User> users;
 
-    std::unordered_map<std::string, Cart> cartForUsers = {
-        {"user1", {"cart101", "user1", SeedData::store101}},
-        {"user2", {"cart102", "user2", SeedData::store101}}
+    std::unordered_map<std::string, tw::delivery::core::Cart> cartForUsers = {
+        {"user1", {"cart101", "user1", tw::delivery::data::SeedData::store101}},
+        {"user2", {"cart102", "user2", tw::delivery::data::SeedData::store101}}
     };
 };
 
 TEST_F(MockCartServiceTest, AddProductToCartForUser_ValidInput) {
+    tw::delivery::dto::AddProductRequest request{users.at(0).userId, "store1", products.at(0)->productId};
 
-    AddProductRequest request{users.at(0).userId, "store1", products.at(0)->productId};
+    tw::delivery::core::Cart cart = cartService->addProductToCartForUser(request);
 
-    Cart cart = cartService->addProductToCartForUser(request);
-
-    std::shared_ptr<Product> product = cart.products.at(0);
+    std::shared_ptr<tw::delivery::core::Product> product = cart.products.at(0);
     EXPECT_EQ(product->productId, "product1");
-    EXPECT_EQ(std::dynamic_pointer_cast<GroceryProduct>(product)->sellingPrice, 100.0); // Assuming selling price is 100.0
+    EXPECT_EQ(std::dynamic_pointer_cast<tw::delivery::core::GroceryProduct>(product)->sellingPrice, 100.0); // Assuming selling price is 100.0
     EXPECT_EQ(cart.products.size(), 1);
 }
 
 TEST_F(MockCartServiceTest, GetCartForUser_ValidUser) {
-    Cart cart = cartService->getCartForUser("user1");
+    tw::delivery::core::Cart cart = cartService->getCartForUser("user1");
 
     EXPECT_EQ(cart.cartId, "cart101");
     EXPECT_EQ(cart.userId, "user1");
