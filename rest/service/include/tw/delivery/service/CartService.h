@@ -7,8 +7,6 @@
 #include "data/SeedData.h"
 #include "dto/AddProductRequest.h"
 
-#include <iostream>
-#include <memory>
 #include <string>
 #include <unordered_map>
 
@@ -19,38 +17,13 @@ namespace tw::delivery::service {
         ProductService productService;
 
     public:
-        CartService(UserService uService, ProductService pService)
-            : userService{std::move(uService)}, productService{std::move(pService)} {}
+        CartService(UserService uService, ProductService pService);
+        CartService(std::unordered_map<std::string, Cart>& carts, UserService& uService, ProductService& pService);
 
-        CartService(std::unordered_map<std::string, Cart>& carts, UserService& uService, ProductService& pService)
-            : userCarts{std::move(carts)}, userService{std::move(uService)}, productService{std::move(pService)} {}
-
-        Cart addProductToCartForUser(const AddProductRequest& addProductRequest) {
-            auto user = userService.fetchUserById(addProductRequest.userId);
-            if (!user.has_value()) {
-                std::cerr << "User not found: " << addProductRequest.userId << std::endl;
-                return {};
-            }
-
-            auto product = productService.getProduct(addProductRequest.productId, addProductRequest.outletId);
-            if (!product) {
-                std::cerr << "Product not found: " << addProductRequest.productId << std::endl;
-                return {};
-            }
-
-            Cart& cart = fetchCartForUser(user.value());
-            cart.products.emplace_back(std::move(product));
-
-            return cart;
-        }
-
-        Cart getCartForUser(std::string_view userId) {
-            return fetchCartForUser(userService.fetchUserById(userId).value());
-        }
+        Cart addProductToCartForUser(const AddProductRequest& addProductRequest);
+        Cart getCartForUser(std::string_view userId);
 
     private:
-        Cart& fetchCartForUser(const User& user) {
-            return userCarts.at(user.userId); // throws if not found
-        }
+        Cart& fetchCartForUser(const User& user);
     };
 }
