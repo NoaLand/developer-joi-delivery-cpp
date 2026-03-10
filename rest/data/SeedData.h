@@ -10,10 +10,6 @@
 
 class SeedData {
 public:
-    static User createUser(const std::string& userId,
-                           const std::string& firstName,
-                           const std::string& lastName);
-
     static int getRandomNumberUsingNextInt(int min, int max);
 
     // private:
@@ -30,16 +26,18 @@ public:
         {"user102", {"cart102", "user102", store101}}
     };;
 
-    static User user101;
-    static User user102;
+    inline static User user101 = {
+        "user101", "John", "Doe", "John.Doe@gmail.com",
+        std::to_string(getRandomNumberUsingNextInt(100000000, 900000000))
+    };
+    inline static User user102 = {
+        "user102", "Rachel", "Zane", "Rachel.Zane@gmail.com",
+        std::to_string(getRandomNumberUsingNextInt(100000000, 900000000))
+    };
     static std::vector<std::shared_ptr<Product>> products;
     static std::vector<User> users;
 
 };
-
-// Initialize static members
-User SeedData::user101 = SeedData::createUser("user101", "John", "Doe");
-User SeedData::user102 = SeedData::createUser("user102", "Rachel", "Zane");
 
 std::vector<std::shared_ptr<Product>> SeedData::products = {
     SeedData::createGroceryProduct("Wheat Bread", "product101",
@@ -50,15 +48,6 @@ std::vector<std::shared_ptr<Product>> SeedData::products = {
 };
 
 std::vector<User> SeedData::users = {SeedData::user101, SeedData::user102};
-
-inline User SeedData::createUser(const std::string& userId,
-                                 const std::string& firstName,
-                                 const std::string& lastName) {
-    return {
-        userId, firstName, lastName, firstName + "." + lastName + "@gmail.com",
-        std::to_string(getRandomNumberUsingNextInt(100000000, 900000000))
-    };
-}
 
 inline int SeedData::getRandomNumberUsingNextInt(int min, int max) {
     static std::random_device rd;
