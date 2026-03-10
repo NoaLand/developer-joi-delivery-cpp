@@ -16,7 +16,6 @@ target_include_directories(tw_delivery_infra INTERFACE
 target_link_libraries(tw_delivery_infra INTERFACE
     nlohmann_json::nlohmann_json
     tw::delivery::core
-    tw::delivery::dto
 )
 
 add_library(tw::delivery::infra ALIAS tw_delivery_infra)
