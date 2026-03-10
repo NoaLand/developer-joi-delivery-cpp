@@ -1,10 +1,9 @@
 #pragma once
 
 #include <optional>
-#include <string>
 #include <vector>
 
-#include "core/User.h"
+#include "tw/delivery/core/User.h"
 #include "data/SeedData.h"
 
 namespace tw::delivery::service {

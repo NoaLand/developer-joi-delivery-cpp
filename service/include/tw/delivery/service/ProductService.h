@@ -1,9 +1,8 @@
 #pragma once
 
-#include <string>
 #include <vector>
 
-#include "core/Product.h"
+#include "tw/delivery/core/Product.h"
 #include "data/SeedData.h"
 
 namespace tw::delivery::service {

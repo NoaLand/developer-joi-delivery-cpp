@@ -3,11 +3,11 @@
 #include <nlohmann/json.hpp>
 #include <memory>
 
-#include "core/Product.h"
-#include "core/GroceryProduct.h"
-#include "core/Outlet.h"
-#include "core/GroceryStore.h"
-#include "core/Cart.h"
+#include "tw/delivery/core/Product.h"
+#include "tw/delivery/core/GroceryProduct.h"
+#include "tw/delivery/core/Outlet.h"
+#include "tw/delivery/core/GroceryStore.h"
+#include "tw/delivery/core/Cart.h"
 
 namespace tw::delivery::core {
     NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(Product, productId, productName, mrp)

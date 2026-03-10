@@ -2,8 +2,8 @@
 #include "tw/delivery/service/ProductService.h"
 #include "tw/delivery/service/UserService.h"
 
-#include "core/Cart.h"
-#include "core/Product.h"
+#include "tw/delivery/core/Cart.h"
+#include "tw/delivery/core/Product.h"
 #include "dto/AddProductRequest.h"
 #include <gtest/gtest.h>
 

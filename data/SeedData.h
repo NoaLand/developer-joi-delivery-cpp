@@ -1,9 +1,9 @@
 #pragma once
 
-#include "core/Cart.h"
-#include "core/GroceryProduct.h"
-#include "core/GroceryStore.h"
-#include "core/User.h"
+#include "tw/delivery/core/Cart.h"
+#include "tw/delivery/core/GroceryProduct.h"
+#include "tw/delivery/core/GroceryStore.h"
+#include "tw/delivery/core/User.h"
 
 #include <random>
 #include <string>
