@@ -1,7 +1,6 @@
 #include <iostream>
 
 #include "dto/AddProductRequest.h"
-#include "dto/CartProductInfo.h"
 
 #include "service/CartService.h"
 #include "service/ProductService.h"
@@ -23,8 +22,8 @@ void addProductToCartForUser(){
     std::cout << "Enter Outlet ID: ";
     std::cin >> outletId;
 
-    auto cartProductInfo = cart_service.addProductToCartForUser({userId, outletId, productId});
-    std::cout << tw::delivery::infra::adapter::json::serialize(cartProductInfo) << std::endl;
+    const auto cart = cart_service.addProductToCartForUser({userId, outletId, productId});
+    std::cout << tw::delivery::infra::adapter::json::serialize(cart) << std::endl;
 }
 
 // Placeholder function to view cart of a specific user

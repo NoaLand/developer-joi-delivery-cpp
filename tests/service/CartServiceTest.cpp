@@ -5,12 +5,9 @@
 #include "core/Cart.h"
 #include "core/Product.h"
 #include "dto/AddProductRequest.h"
-#include "dto/CartProductInfo.h"
 #include <gtest/gtest.h>
 
 #include <vector>
-
-// using namespace detail;
 
 class MockCartServiceTest : public ::testing::Test {
 protected:
@@ -54,11 +51,12 @@ TEST_F(MockCartServiceTest, AddProductToCartForUser_ValidInput) {
 
     AddProductRequest request{users.at(0).userId, "store1", products.at(0).productId};
 
-    CartProductInfo cartProductInfo = cartService->addProductToCartForUser(request);
+    Cart cart = cartService->addProductToCartForUser(request);
 
-    EXPECT_EQ(cartProductInfo.product->productId, "product1");
-    EXPECT_EQ(cartProductInfo.sellingPrice, 100.0); // Assuming selling price is 100.0
-    EXPECT_EQ(cartProductInfo.cart.products.size(), 1);
+    std::shared_ptr<Product> product = cart.products.at(0);
+    EXPECT_EQ(product->productId, "product1");
+    EXPECT_EQ(std::dynamic_pointer_cast<GroceryProduct>(product)->sellingPrice, 100.0); // Assuming selling price is 100.0
+    EXPECT_EQ(cart.products.size(), 1);
 }
 
 TEST_F(MockCartServiceTest, GetCartForUser_ValidUser) {

@@ -8,7 +8,6 @@
 #include "core/Outlet.h"
 #include "core/GroceryStore.h"
 #include "core/Cart.h"
-#include "dto/CartProductInfo.h"
 
 NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(Product, productId, productName, mrp)
 NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(GroceryProduct,
@@ -100,7 +99,6 @@ namespace nlohmann {
 }
 
 NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(Cart, cartId, userId, outlet, products)
-NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(CartProductInfo, cart, product, sellingPrice)
 
 namespace tw::delivery::infra::adapter::json {
     template <typename T>
