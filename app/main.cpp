@@ -39,7 +39,6 @@ void viewCartInfo(tw::delivery::service::CartService& cart_service) {
 }
 
 int main() {
-    tw::delivery::service::CartService cart_service{{}, {}};
     std::unordered_map<int, std::function<void(tw::delivery::service::CartService&)>> menu_routes {
         {1, addProductToCartForUser},
         {2, viewCartInfo},
@@ -55,6 +54,7 @@ int main() {
 
     int option;
     if (std::cin >> option && menu_routes.count(option)) {
+        tw::delivery::service::CartService cart_service{{}, {}};
         menu_routes[option](cart_service);
     } else {
         std::cin.clear();
