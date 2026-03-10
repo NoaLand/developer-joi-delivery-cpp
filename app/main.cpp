@@ -29,12 +29,7 @@ void addProductToCartForUser(){
     addProductRequest.setProductId(productId);
 
     auto cartProductInfo = cart_service.addProductToCartForUser(addProductRequest);
-    auto response_body = detail::to_json(cartProductInfo);
-    nlohmann::json j;
-    j = response_body;
-    // add code here to pretty print the json object
-    std::cout << j.dump(4) << std::endl; // pretty print with 4 spaces indentation
-
+    std::cout << tw::delivery::infra::adapter::json::serialize(cartProductInfo) << std::endl;
 }
 
 // Placeholder function to view cart of a specific user
@@ -48,13 +43,7 @@ void viewCartInfo() {
     auto cart = cart_service.getCartForUser(userId);
     std::cout << "-- view query - user id " << userId << "\n";
 
-    auto response_body = detail::to_json(cart);
-    nlohmann::json j;
-    j = response_body;
-
-    // add code here to pretty print the json object
-    std::cout << j.dump(4) << std::endl; // pretty print with 4 spaces indentation
-
+    std::cout << tw::delivery::infra::adapter::json::serialize(cart) << std::endl;
 }
 
 int main(int argc, char *argv[]) {
