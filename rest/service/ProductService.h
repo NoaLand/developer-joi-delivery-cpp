@@ -1,27 +1,28 @@
 #pragma once
 
-#include <optional>
 #include <string>
 #include <vector>
 
-#include "core/GroceryProduct.h"
+#include "core/Product.h"
 #include "data/SeedData.h"
 
 class ProductService {
-    std::vector<GroceryProduct> products{SeedData::groceryProducts};
+    std::vector<std::shared_ptr<Product>> products{SeedData::products};
 
 public:
     ProductService() = default;
-    explicit ProductService(std::vector<GroceryProduct> productsRef) : products{std::move(productsRef)} {}
+    explicit ProductService(std::vector<std::shared_ptr<Product>> productsRef) : products{std::move(productsRef)} {}
 
-    // Return optional to handle "not found" instead of null
-    [[nodiscard]] std::optional<GroceryProduct> getProduct(std::string_view productId, std::string_view outletId) const {
-        for (const auto& groceryProduct : products) {
-            if (groceryProduct.productId == productId
-                && groceryProduct.storeId == outletId) {
-                return groceryProduct;
+    [[nodiscard]] std::shared_ptr<Product> getProduct(std::string_view productId, std::string_view outletId) const {
+        for (const auto& product : products) {
+            if (product->productId == productId) {
+                if (auto grocery = std::dynamic_pointer_cast<GroceryProduct>(product)) {
+                    if (grocery->storeId == outletId) {
+                        return product;
+                    }
+                }
             }
         }
-        return std::nullopt; // No match found
+        return nullptr; // No match found
     }
 };

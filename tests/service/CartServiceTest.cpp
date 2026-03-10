@@ -13,8 +13,8 @@ class MockCartServiceTest : public ::testing::Test {
 protected:
     void SetUp() override {
         GroceryStore store1{"Fresh Mart", "Fresh Mart Store", "store1"};
-        GroceryProduct product1 = SeedData::createGroceryProduct("Apple", "product1",  store1);
-        product1.sellingPrice = 100.0;
+        const auto product1 = SeedData::createGroceryProduct("Apple", "product1",  store1);
+        product1->sellingPrice = 100.0;
 
         products.push_back(product1);
 
@@ -29,15 +29,14 @@ protected:
         productService = std::make_unique<ProductService>(products);
         cartService = std::make_unique<CartService>(cartForUsers, *userService, *productService);
     }
-    void TearDown() override {
-        // Cleanup if necessary
-        products.clear();
-    }
+
+    void TearDown() override {}
+
     std::unique_ptr<UserService> userService;   
     std::unique_ptr<ProductService> productService;
     std::unique_ptr<CartService> cartService;
 
-    std::vector<GroceryProduct> products;// = {product};
+    std::vector<std::shared_ptr<Product>> products;
     std::vector<User> users;
 
     std::unordered_map<std::string, Cart> cartForUsers = {
@@ -49,7 +48,7 @@ protected:
 
 TEST_F(MockCartServiceTest, AddProductToCartForUser_ValidInput) {
 
-    AddProductRequest request{users.at(0).userId, "store1", products.at(0).productId};
+    AddProductRequest request{users.at(0).userId, "store1", products.at(0)->productId};
 
     Cart cart = cartService->addProductToCartForUser(request);
 

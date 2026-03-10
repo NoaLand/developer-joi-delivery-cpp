@@ -16,7 +16,7 @@ public:
   static GroceryStore store102;
   static User user101;
   static User user102;
-  static std::vector<GroceryProduct> groceryProducts;
+  static std::vector<std::shared_ptr<Product>> products;
   static std::vector<User> users;
 
   // Factory methods
@@ -36,7 +36,7 @@ public:
   static int getRandomNumberUsingNextInt(int min, int max);
 
 // private:
-  static GroceryProduct createGroceryProduct(const std::string &productName,
+  static std::shared_ptr<GroceryProduct >createGroceryProduct(const std::string &productName,
                                              const std::string &productId,
                                              const GroceryStore &store);
 };
@@ -55,7 +55,7 @@ std::unordered_map<std::string, Cart> SeedData::cartForUsers = {
     {"user102",
      SeedData::createCartForUser("user102", "Rachel", "Zane", "cart102")}};
 
-std::vector<GroceryProduct> SeedData::groceryProducts = {
+std::vector<std::shared_ptr<Product>> SeedData::products = {
     SeedData::createGroceryProduct("Wheat Bread", "product101",
                                    SeedData::store101),
     SeedData::createGroceryProduct("Spinach", "product102", SeedData::store101),
@@ -94,19 +94,17 @@ int SeedData::getRandomNumberUsingNextInt(int min, int max) {
   return dist(gen);
 }
 
-GroceryProduct SeedData::createGroceryProduct(const std::string &productName,
+std::shared_ptr<GroceryProduct >SeedData::createGroceryProduct(const std::string &productName,
                                               const std::string &productId,
                                               const GroceryStore &store) {
-  GroceryProduct grocery;
-  grocery.productId = productId;
-  grocery.productName = productName;
-  grocery.mrp = 10.5f;
-  grocery.weight = 500.0f;
-  grocery.storeId = store.outletId;
-  grocery.threshold = 10;
-  grocery.availableStock = 30;
+  auto grocery = std::make_shared<GroceryProduct>();
+  grocery->productId = productId;
+  grocery->productName = productName;
+  grocery->mrp = 10.5f;
+  grocery->weight = 500.0f;
+  grocery->storeId = store.outletId;
+  grocery->threshold = 10;
+  grocery->availableStock = 30;
 
   return grocery;
-
-  // return GroceryProduct(productId, productName, 10.5f, 500.0f, store, 10, 30);
 }

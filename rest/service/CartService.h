@@ -3,7 +3,6 @@
 #include "ProductService.h"
 #include "UserService.h"
 #include "core/Cart.h"
-#include "core/GroceryProduct.h"
 #include "core/User.h"
 #include "data/SeedData.h"
 #include "dto/AddProductRequest.h"
@@ -38,17 +37,14 @@ public:
             return {};
         }
 
-        auto product = productService.getProduct(
-            addProductRequest.productId, addProductRequest.outletId);
-        if (!product.has_value()) {
-            std::cerr << "Product not found: " << addProductRequest.outletId << std::endl;
+        auto product = productService.getProduct(addProductRequest.productId, addProductRequest.outletId);
+        if (!product) {
+            std::cerr << "Product not found: " << addProductRequest.productId << std::endl;
             return {};
         }
 
         Cart& cart = fetchCartForUser(user.value());
-        GroceryProduct gproduct = product.value();
-        // TODO: remove make_shared later
-        cart.products.emplace_back(std::make_shared<GroceryProduct>(gproduct));
+        cart.products.emplace_back(std::move(product));
 
         return cart;
     }
