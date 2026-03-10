@@ -10,14 +10,26 @@
 
 class SeedData {
 public:
-    static int getRandomNumberUsingNextInt(int min, int max);
+    static int getRandomNumberUsingNextInt(int min, int max) {
+        static std::random_device rd;
+        static std::mt19937 gen(rd());
+        std::uniform_int_distribution<> dist(min, max - 1);
+        return dist(gen);
+    }
 
-    // private:
-    static std::shared_ptr<GroceryProduct> createGroceryProduct(const std::string& productName,
-                                                                const std::string& productId,
-                                                                const std::shared_ptr<GroceryStore>& store);
+    static std::shared_ptr<GroceryProduct> createGroceryProduct(const std::string& productName, const std::string& productId, const std::shared_ptr<GroceryStore>& store) {
+        auto grocery = std::make_shared<GroceryProduct>();
+        grocery->productId = productId;
+        grocery->productName = productName;
+        grocery->mrp = 10.5f;
+        grocery->weight = 500.0f;
+        grocery->storeId = store->outletId;
+        grocery->threshold = 10;
+        grocery->availableStock = 30;
 
-    // Static data members
+        return grocery;
+    }
+
     inline static auto store101 = std::make_shared<GroceryStore>("Fresh Picks", "Fresh Picks Store", "store101");
     inline static auto store102 = std::make_shared<GroceryStore>("Natural Choice", "Natural Choice Store", "store102");
 
@@ -46,25 +58,3 @@ std::vector<std::shared_ptr<Product>> SeedData::products = {
     SeedData::createGroceryProduct("Crackers", "product103",
                                    SeedData::store101)
 };
-
-inline int SeedData::getRandomNumberUsingNextInt(int min, int max) {
-    static std::random_device rd;
-    static std::mt19937 gen(rd());
-    std::uniform_int_distribution<> dist(min, max - 1);
-    return dist(gen);
-}
-
-inline std::shared_ptr<GroceryProduct> SeedData::createGroceryProduct(const std::string& productName,
-                                                                      const std::string& productId,
-                                                                      const std::shared_ptr<GroceryStore>& store) {
-    auto grocery = std::make_shared<GroceryProduct>();
-    grocery->productId = productId;
-    grocery->productName = productName;
-    grocery->mrp = 10.5f;
-    grocery->weight = 500.0f;
-    grocery->storeId = store->outletId;
-    grocery->threshold = 10;
-    grocery->availableStock = 30;
-
-    return grocery;
-}
