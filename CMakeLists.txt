@@ -7,6 +7,11 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 enable_testing()
 
-add_subdirectory(rest)
+add_subdirectory(core)
+add_subdirectory(dto)
+add_subdirectory(data)
+add_subdirectory(service)
+add_subdirectory(infra)
 add_subdirectory(app)
+
 add_subdirectory(tests)

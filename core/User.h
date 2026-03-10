@@ -3,7 +3,7 @@
 #include <string>
 
 namespace tw::delivery::core {
-    struct  User {
+    struct User {
         std::string userId;
         std::string firstName;
         std::string lastName;

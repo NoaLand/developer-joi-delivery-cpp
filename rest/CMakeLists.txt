@@ -1,5 +1,0 @@
-add_subdirectory(core)
-add_subdirectory(dto)
-add_subdirectory(data)
-add_subdirectory(service)
-add_subdirectory(infra)
