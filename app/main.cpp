@@ -52,8 +52,7 @@ int main() {
     std::cout << "3. Exit\n";
     std::cout << "Select an option (1-3): ";
 
-    int option;
-    if (std::cin >> option && menu_routes.count(option)) {
+    if (int option; std::cin >> option && menu_routes.count(option)) {
         tw::delivery::service::CartService cart_service{{}, {}};
         menu_routes[option](cart_service);
     } else {
