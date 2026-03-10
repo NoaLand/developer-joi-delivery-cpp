@@ -6,5 +6,7 @@
 #include <set>
 
 struct GroceryStore : Outlet {
-  std::set<GroceryProduct> inventory;
+    std::set<GroceryProduct> inventory;
+
+    using Outlet::Outlet;
 };

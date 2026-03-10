@@ -2,5 +2,6 @@
 
 #include "Product.h"
 
-class FoodProduct : public Product {
+struct FoodProduct : Product {
+    using Product::Product;
 };

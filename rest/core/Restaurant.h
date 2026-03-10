@@ -1,6 +1,7 @@
 #pragma once
 #include "Outlet.h"
 
-class Restaurant : public Outlet {
+struct Restaurant : Outlet {
+    using Outlet::Outlet;
 }; 
 
