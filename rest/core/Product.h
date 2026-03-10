@@ -7,6 +7,8 @@ struct  Product {
     std::string productName;
     float mrp;
 
+    virtual ~Product() = default;
+
     bool operator<(const Product& other) const {
         return this->mrp < other.mrp;
     }
