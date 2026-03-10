@@ -8,7 +8,7 @@
 #include "tw/delivery/service/ProductService.h"
 #include "tw/delivery/service/UserService.h"
 
-#include "infra/adapters/JsonAdapter.h"
+#include "tw/delivery/infra/adapters/JsonAdapter.h"
 
 void addProductToCartForUser(tw::delivery::service::CartService& cart_service){
     std::cout << "Adding product to Cart for a user\n";
