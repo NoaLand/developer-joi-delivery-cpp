@@ -35,8 +35,8 @@ void viewCartInfo() {
     std::cout << "User ID: " << userId << "\n";
     
     auto cart = cart_service.getCartForUser(userId);
-    std::cout << "-- view query - user id " << userId << "\n";
 
+    std::cout << "-- view query - user id " << userId << "\n";
     std::cout << tw::delivery::infra::adapter::json::serialize(cart) << std::endl;
 }
 
@@ -49,9 +49,7 @@ int main() {
 
     int option;
     std::cin >> option;
-
     switch(option) {
-
         case 1:
             addProductToCartForUser();
             break;
@@ -65,5 +63,6 @@ int main() {
             std::cout << "Invalid option selected.\n";
             break;
     }
-  return EXIT_SUCCESS;
+
+    return 0;
 }
