@@ -13,16 +13,9 @@ namespace tw::delivery::service {
 
     public:
         UserService() = default;
-        explicit UserService(std::vector<User> users) : users{std::move(users)} {}
+        explicit UserService(std::vector<User> users);
 
         // Return optional to handle "not found" instead of null
-        [[nodiscard]] std::optional<User> fetchUserById(std::string_view userId) const {
-            for (const auto& user : users) {
-                if (user.userId == userId) {
-                    return user;
-                }
-            }
-            return std::nullopt; // No match found
-        }
+        [[nodiscard]] std::optional<User> fetchUserById(std::string_view userId) const;
     };
 }
