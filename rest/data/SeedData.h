@@ -18,6 +18,13 @@ public:
         return dist(gen);
     }
 
+    static Cart createCartForUser(std::string userId,
+                                  std::string_view firstName,
+                                  std::string_view lastName,
+                                  std::string cartId) {
+        return {std::move(cartId), std::move(userId), store101};
+    }
+
     static std::shared_ptr<GroceryProduct> createGroceryProduct(std::string productName, std::string productId, const std::shared_ptr<GroceryStore>& store) {
         auto grocery = std::make_shared<GroceryProduct>();
         grocery->productId = std::move(productId);
@@ -35,9 +42,9 @@ public:
     inline static auto store102 = std::make_shared<GroceryStore>("Natural Choice", "Natural Choice Store", "store102");
 
     inline static std::unordered_map<std::string, Cart> cartForUsers {
-        {"user101", {"cart101", "user101", store101}},
-        {"user102", {"cart102", "user102", store101}}
-    };;
+        {"user101", createCartForUser("user101", "John", "Doe", "cart101")},
+        {"user102", createCartForUser("user102", "Rachel", "Zane", "cart102")}
+    };
 
     inline static std::vector<std::shared_ptr<Product>> products = {
         createGroceryProduct("Wheat Bread", "product101", store101),
