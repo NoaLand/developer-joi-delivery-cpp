@@ -22,9 +22,14 @@ public:
                                                                 const std::shared_ptr<GroceryStore>& store);
 
     // Static data members
-    static std::unordered_map<std::string, Cart> cartForUsers;
     inline static auto store101 = std::make_shared<GroceryStore>("Fresh Picks", "Fresh Picks Store", "store101");
     inline static auto store102 = std::make_shared<GroceryStore>("Natural Choice", "Natural Choice Store", "store102");
+
+    inline static std::unordered_map<std::string, Cart> cartForUsers = {
+        {"user101", {"cart101", "user101", store101}},
+        {"user102", {"cart102", "user102", store101}}
+    };;
+
     static User user101;
     static User user102;
     static std::vector<std::shared_ptr<Product>> products;
@@ -35,17 +40,6 @@ public:
 // Initialize static members
 User SeedData::user101 = SeedData::createUser("user101", "John", "Doe");
 User SeedData::user102 = SeedData::createUser("user102", "Rachel", "Zane");
-
-std::unordered_map<std::string, Cart> SeedData::cartForUsers = {
-    {
-        "user101",
-        {"cart101", "user101", store101}
-    },
-    {
-        "user102",
-        {"cart102", "user102", store101}
-    }
-};
 
 std::vector<std::shared_ptr<Product>> SeedData::products = {
     SeedData::createGroceryProduct("Wheat Bread", "product101",
