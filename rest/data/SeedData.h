@@ -21,21 +21,21 @@ public:
     inline static auto store101 = std::make_shared<GroceryStore>("Fresh Picks", "Fresh Picks Store", "store101");
     inline static auto store102 = std::make_shared<GroceryStore>("Natural Choice", "Natural Choice Store", "store102");
 
-    inline static std::unordered_map<std::string, Cart> cartForUsers = {
+    inline static std::unordered_map<std::string, Cart> cartForUsers {
         {"user101", {"cart101", "user101", store101}},
         {"user102", {"cart102", "user102", store101}}
     };;
 
-    inline static User user101 = {
+    inline static User user101 {
         "user101", "John", "Doe", "John.Doe@gmail.com",
         std::to_string(getRandomNumberUsingNextInt(100000000, 900000000))
     };
-    inline static User user102 = {
+    inline static User user102 {
         "user102", "Rachel", "Zane", "Rachel.Zane@gmail.com",
         std::to_string(getRandomNumberUsingNextInt(100000000, 900000000))
     };
     static std::vector<std::shared_ptr<Product>> products;
-    inline static std::vector<User> users{user101, user102};
+    inline static std::vector<User> users {user101, user102};
 
 };
 
