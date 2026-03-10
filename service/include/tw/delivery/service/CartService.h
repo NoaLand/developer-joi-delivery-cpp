@@ -5,7 +5,7 @@
 #include "tw/delivery/core/Cart.h"
 #include "tw/delivery/core/User.h"
 #include "tw/delivery/data/SeedData.h"
-#include "dto/AddProductRequest.h"
+#include "tw/delivery/dto/AddProductRequest.h"
 
 #include <string>
 #include <unordered_map>

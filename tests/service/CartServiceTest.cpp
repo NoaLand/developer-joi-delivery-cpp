@@ -4,7 +4,7 @@
 
 #include "tw/delivery/core/Cart.h"
 #include "tw/delivery/core/Product.h"
-#include "dto/AddProductRequest.h"
+#include "tw/delivery/dto/AddProductRequest.h"
 #include <gtest/gtest.h>
 
 #include <vector>
