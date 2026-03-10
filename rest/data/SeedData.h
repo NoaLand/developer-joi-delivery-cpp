@@ -38,6 +38,12 @@ public:
         {"user102", {"cart102", "user102", store101}}
     };;
 
+    inline static std::vector<std::shared_ptr<Product>> products = {
+        createGroceryProduct("Wheat Bread", "product101", store101),
+        createGroceryProduct("Spinach", "product102", store101),
+        createGroceryProduct("Crackers", "product103", store101)
+    };
+
     inline static User user101 {
         "user101", "John", "Doe", "John.Doe@gmail.com",
         std::to_string(getRandomNumberUsingNextInt(100000000, 900000000))
@@ -46,15 +52,5 @@ public:
         "user102", "Rachel", "Zane", "Rachel.Zane@gmail.com",
         std::to_string(getRandomNumberUsingNextInt(100000000, 900000000))
     };
-    static std::vector<std::shared_ptr<Product>> products;
     inline static std::vector<User> users {user101, user102};
-
-};
-
-std::vector<std::shared_ptr<Product>> SeedData::products = {
-    SeedData::createGroceryProduct("Wheat Bread", "product101",
-                                   SeedData::store101),
-    SeedData::createGroceryProduct("Spinach", "product102", SeedData::store101),
-    SeedData::createGroceryProduct("Crackers", "product103",
-                                   SeedData::store101)
 };
