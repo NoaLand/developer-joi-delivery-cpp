@@ -12,20 +12,9 @@ namespace tw::delivery::service {
 
     public:
         ProductService() = default;
-        explicit ProductService(std::vector<std::shared_ptr<Product>> productsRef) : products{std::move(productsRef)} {}
+        explicit ProductService(std::vector<std::shared_ptr<Product>> productsRef);
 
-        [[nodiscard]] std::shared_ptr<Product> getProduct(std::string_view productId, std::string_view outletId) const {
-            for (const auto& product : products) {
-                if (product->productId == productId) {
-                    if (auto grocery = std::dynamic_pointer_cast<GroceryProduct>(product)) {
-                        if (grocery->storeId == outletId) {
-                            return product;
-                        }
-                    }
-                }
-            }
-            return nullptr; // No match found
-        }
+        [[nodiscard]] std::shared_ptr<Product> getProduct(std::string_view productId, std::string_view outletId) const;
     };
 }
 
