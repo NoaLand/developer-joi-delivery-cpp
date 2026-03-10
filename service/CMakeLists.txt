@@ -9,10 +9,12 @@ target_include_directories(tw_delivery_service PUBLIC
     $<INSTALL_INTERFACE:include>
 )
 
-target_link_libraries(tw_delivery_service PRIVATE
-    tw::delivery::core
-    tw::delivery::dto
-    tw::delivery::data
+target_link_libraries(tw_delivery_service
+    PUBLIC
+        tw::delivery::dto
+        tw::delivery::data
+    PRIVATE
+        tw::delivery::core
 )
 
 add_library(tw::delivery::service ALIAS tw_delivery_service)
