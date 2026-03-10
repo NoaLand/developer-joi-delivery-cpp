@@ -48,9 +48,7 @@ public:
     // TODO: remove make_shared later
     cart.products.emplace_back(std::make_shared<GroceryProduct>(gproduct));
 
-    cartProductInfo.setCart(cart);
-    cartProductInfo.setProduct(gproduct);
-    cartProductInfo.setSellingPrice(gproduct.sellingPrice);
+    cartProductInfo = {cart, std::make_shared<GroceryProduct>(gproduct), gproduct.sellingPrice};
 
     return cartProductInfo;
   }
